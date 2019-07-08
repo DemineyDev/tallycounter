@@ -29,6 +29,8 @@ function startTime() {
   }
 
 let startButton = document.getElementById("start")
+let currentStartTime = 0
+let currentEndTime = 0
 
 startButton.addEventListener("click", function(){
     var today = new Date();
@@ -37,6 +39,7 @@ startButton.addEventListener("click", function(){
     var s = today.getSeconds();
     m = checkTime(m);
     s = checkTime(s);
+    currentStartTime = Date.now()
     document.getElementById('start-time').innerHTML =
     h + ":" + m + ":" + s;
     var t = setTimeout(startTime, 500);
@@ -50,7 +53,27 @@ stopButton.addEventListener("click", function(){
     var s = today.getSeconds();
     m = checkTime(m);
     s = checkTime(s);
+    
     document.getElementById('end-time').innerHTML =
     h + ":" + m + ":" + s;
     var t = setTimeout(startTime, 500);
+    
+})
+
+let clearButton = document.getElementById("clear")
+clearButton.addEventListener("click", function(){
+    document.getElementById("start-time").innerHTML = "00:00:00"
+    document.getElementById("end-time").innerHTML = "00:00:00"
+    document.getElementById("count-display").innerHTML = 0
+    count = 0
+})
+
+stopButton.addEventListener("click", function() {
+    currentEndTime = Date.now()
+    var totalTime = (currentEndTime - currentStartTime) / 1000 / 60
+    var average = Math.round(count / totalTime)
+    var averagePerHour = average * 60
+    // alert(totalTime)
+    // alert(count)
+    alert("You reviewed " + count + " profiles at " + average + " profiles per minute or " + averagePerHour + " profiles per hour")
 })
