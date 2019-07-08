@@ -71,8 +71,9 @@ clearButton.addEventListener("click", function(){
 stopButton.addEventListener("click", function() {
     currentEndTime = Date.now()
     var totalTime = (currentEndTime - currentStartTime) / 1000 / 60
-    var average = Math.round(count / totalTime)
-    var averagePerHour = average * 60
+    var average = count / totalTime
+    var averageRounded = Math.round(count / totalTime)
+    var averagePerHour = Math.round(average * 60)
     // alert(totalTime)
     // alert(count)
     alert("You reviewed " + count + " profiles at " + average + " profiles per minute or " + averagePerHour + " profiles per hour")
