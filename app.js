@@ -76,5 +76,5 @@ stopButton.addEventListener("click", function() {
     var averagePerHour = Math.round(average * 60)
     // alert(totalTime)
     // alert(count)
-    alert("You reviewed " + count + " profiles at " + average + " profiles per minute or " + averagePerHour + " profiles per hour")
+    alert("You reviewed " + count + " profiles at " + averageRounded + " profiles per minute or " + averagePerHour + " profiles per hour")
 })
